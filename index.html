@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edymanuel Consult Limited</title>
+    <link rel="stylesheet" href="css\authenticate.css">
+
+</head>
+
+<body>
+<div class="app">
+
+    
+<section id="loginPage" class="auth-page">
+<div class="auth-container">
+<div class="brand"><div class="brand-mark">C</div><div><h1>Edymanuel Consult Limited</h1><span>styles</span></div></div>
+<div class="auth-card">
+<div class="auth-heading"><span class="eyebrow">WELCOME BACK</span><h2>Sign in</h2><p>Access your account and continue where you left off.</p></div>
+<form id="loginForm">
+<div class="input-group"><label for="loginEmail">Email address</label><input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required></div>
+<div class="input-group"><label for="loginPassword">Password</label><div class="password-field"><input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required><button type="button" class="password-toggle" onclick="togglePassword('loginPassword', this)">Show</button></div></div>
+<button type="submit" class="primary-button">Sign in</button>
+</form>
+<div class="divider"><span>or</span></div>
+<button type="button" id="fingerprintLoginButton" class="secondary-button fingerprint-button"><span class="fingerprint-icon">◉</span> Login with fingerprint</button>
+<div id="loginMessage" class="message"></div>
+<div class="switch-auth"><span>Don't have an account?</span><button type="button" onclick="showPage('signupPage')">Create account</button></div>
+</div></div>
+</section>
+
+<section id="signupPage" class="auth-page hidden">
+<div class="signup-wrapper">
+<div class="signup-header">
+<div class="brand"><div class="brand-mark">C</div><div><h1>Edymanuel Consult Limited</h1><span>styles</span></div></div>
+<div class="signup-title"><span class="eyebrow">CREATE YOUR ACCOUNT</span><h2>Let's get you started.</h2><p>Create your account in a few simple steps.</p></div>
+<div class="signup-progress">
+    <div class="progress-item active" data-step="1"><span>01</span><small>Details</small></div>
+    <div class="progress-line"></div>
+    <div class="progress-item" data-step="2"><span>02</span><small>Location</small></div>
+    <div class="progress-line"></div>
+    <div class="progress-item" data-step="3"><span>03</span><small>Profile</small></div>
+</div>
+</div>
+
+<form id="signupForm" class="signup-form">
+
+<div class="form-section signup-step active-step" data-step="1"><div class="section-number">01</div><div class="section-content">
+<div class="section-heading"><span>YOUR INFORMATION</span><h3>Personal details</h3><p>Tell us a little about yourself.</p></div>
+<div class="form-grid">
+<div class="input-group full-width"><label for="fullName">Full name</label><input type="text" id="fullName" placeholder="Enter your full name" autocomplete="name" required></div>
+<div class="input-group"><label for="signupEmail">Email address</label><input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required></div>
+<div class="input-group"><label for="signupPassword">Password</label><div class="password-field"><input type="password" id="signupPassword" placeholder="Create a password" autocomplete="new-password" minlength="6" required><button type="button" class="password-toggle" onclick="togglePassword('signupPassword', this)">Show</button></div></div>
+<div class="input-group full-width"><label for="confirmPassword">Confirm password</label><div class="password-field"><input type="password" id="confirmPassword" placeholder="Confirm your password" autocomplete="new-password" minlength="6" required><button type="button" class="password-toggle" onclick="togglePassword('confirmPassword', this)">Show</button></div></div>
+</div></div></div>
+
+<div class="form-section signup-step hidden-step" data-step="2"><div class="section-number">02</div><div class="section-content">
+<div class="section-heading"><span>LOCATION & AGE</span><h3>Where are you?</h3><p>Your browser can automatically detect your approximate location.</p></div>
+<div class="form-grid">
+<div class="input-group full-width"><label>Detected location</label><div class="location-field"><span id="location" class="location-text">Detecting your location...</span><button type="button" id="locationButton" class="detect-button">Detect</button></div><small id="locationStatus">Your browser will ask for permission to use your location.</small></div>
+<div class="input-group full-width"><label for="dateOfBirth">Date of birth</label><input type="date" id="dateOfBirth" required></div>
+</div></div></div>
+
+<div class="form-section signup-step hidden-step" data-step="3"><div class="section-number">03</div><div class="section-content">
+<div class="section-heading"><span>PROFILE & SECURITY</span><h3>Make it yours.</h3><p>Add a profile photo and enable biometric authentication on supported devices.</p></div>
+<div class="profile-upload"><div id="profilePreview" class="profile-preview"><span>+</span></div><div class="upload-info"><h4>Profile picture</h4><p>Choose a photo to represent your account.</p><label for="profilePicture" class="upload-button">Choose photo</label><input type="file" id="profilePicture" accept="image/*" hidden></div></div>
+<div class="security-card"><div class="security-icon">◉</div><div class="security-copy"><h4>Fingerprint / biometric login</h4><p>Use your device's fingerprint, Face ID, PIN or other supported biometric security.</p></div><label class="switch"><input type="checkbox" id="fingerprintToggle"><span class="slider"></span></label></div>
+<div id="fingerprintStatus" class="security-status"></div>
+</div></div>
+
+<div class="step-navigation">
+    <button type="button" id="backStepButton" class="step-back hidden-step">Back</button>
+    <button type="button" id="nextStepButton" class="primary-button step-next">Continue</button>
+</div>
+
+<div id="signupMessage" class="message"></div>
+<button type="submit" id="createAccountButton" class="primary-button create-account-button hidden-step">Create my account</button>
+<div class="switch-auth"><span>Already have an account?</span><button type="button" onclick="showPage('loginPage')">Sign in</button></div>
+</form>
+</div>
+</section>
+
+<section id="dashboardPage" class="dashboard-page hidden">
+<header class="dashboard-header"><div class="dashboard-brand"><div class="brand-mark">C</div><div><strong>Edymanuel Consult Limited</strong><span>styles</span></div></div><button class="logout-button" id="logoutButton">Log out</button></header>
+<main class="dashboard-main">
+<section class="welcome-section"><div><span class="eyebrow">YOUR ACCOUNT</span><h1>Welcome, <span id="dashboardFirstName">User</span>.</h1><p>Everything about your account is shown below.</p></div></section>
+<section class="profile-hero"><div class="dashboard-avatar" id="dashboardAvatar"><span>U</span></div><div class="profile-hero-info"><span class="profile-label">ACCOUNT HOLDER</span><h2 id="dashboardName">User</h2><p id="dashboardEmail">user@example.com</p></div><div class="account-status"><span class="status-dot"></span><span>Account active</span></div></section>
+<section class="information-section"><div class="section-title"><span>ACCOUNT INFORMATION</span><h2>Your details</h2></div>
+<div class="details-grid">
+<div class="detail-card"><span class="detail-label">FULL NAME</span><strong id="detailName">—</strong></div>
+<div class="detail-card"><span class="detail-label">EMAIL ADDRESS</span><strong id="detailEmail">—</strong></div>
+<div class="detail-card"><span class="detail-label">LOCATION</span><strong id="detailLocation">—</strong></div>
+<div class="detail-card"><span class="detail-label">DATE OF BIRTH</span><strong id="detailDOB">—</strong></div>
+<div class="detail-card"><span class="detail-label">BIOMETRIC LOGIN</span><strong id="detailFingerprint">—</strong></div>
+<div class="detail-card"><span class="detail-label">ACCOUNT CREATED</span><strong id="detailCreated">—</strong></div>
+</div></section>
+<section class="dashboard-card security-dashboard"><div class="dashboard-card-icon">◉</div><div><span class="detail-label">SECURITY</span><h3>Your account security</h3><p>Biometric authentication provides a convenient way to access your account on supported devices.</p></div><div id="dashboardSecurityStatus" class="security-badge">—</div></section>
+</main>
+<footer class="dashboard-footer"><span>Edymanuel Consult Limited </span><span>Your account is stored locally on this device.</span></footer>
+</section>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
